@@ -1,0 +1,92 @@
+.container {
+    display: grid;
+    place-items: center;
+  }
+  
+  .header {
+    font-weight: bold;
+  }
+  
+  .formContainer {
+    display: grid;
+    grid-gap: 10px;
+  }
+  
+  .companyName,
+  .amount {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+  }
+  
+  .optionContainer {
+    display: grid;
+    grid-gap: 10px;
+  }
+  
+  .issueReceipt,
+  .uploadDocument {
+    border: 1px solid;
+    padding: 10px;
+  }
+  
+  .documentContainer {
+    border: 1px solid;
+    padding: 10px;
+  }
+  
+  .selectDocument {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+  }
+  
+  .buttonContainer {
+    display: grid;
+    place-items: center;
+  }
+  
+  .issueButton {
+    border: 1px solid;
+    padding: 10px;
+  }
+  
+  .textField {
+    border: 1px solid;
+    color: #000;
+  }
+  
+  .fileInput {
+    border: 1px solid;
+    color: #000;
+  }
+  
+  .tableContainer {
+    border: 1px solid;
+    padding: 10px;
+    margin-top: 20px;
+  }
+  
+  .issuedReceipts {
+    font-weight: bold;
+  }
+  
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .table th,
+  .table td {
+    border: 1px solid;
+    padding: 5px;
+  }
+  
+  .table th {
+    font-weight: bold;
+  }
+  
+  .table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
