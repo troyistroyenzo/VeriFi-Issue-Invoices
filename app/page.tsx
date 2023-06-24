@@ -12,8 +12,8 @@ export default function Page() {
     if (amount) {
       const timestamp = new Date().toISOString();
       const transactionId = generateTransactionId();
-      const vatValue = calculateVAT(amount);
-      const gasFee = calculateGasFee(amount);
+      const vatValue = calculateVAT(parseFloat(amount)); // Parse amount to float
+      const gasFee = calculateGasFee(parseFloat(amount)); // Parse amount to float
       const metadataLink = generateMetadataLink(); // Generate random metadata link
 
       const receipt: Receipt = {
@@ -47,13 +47,13 @@ export default function Page() {
     return `https://etherscan.io/block/${transactionNumber}`;
   };
 
-  const calculateVAT = (amount) => {
+  const calculateVAT = (amount: number) => {
     // Calculate VAT value (12% of the transaction amount)
     const vatValue = amount * 0.12;
     return vatValue.toFixed(2);
   };
 
-  const calculateGasFee = (amount) => {
+  const calculateGasFee = (amount: number) => {
     // Calculate gas fee (0.001% cut from each transaction)
     const gasFee = amount * 0.00001;
     return gasFee.toFixed(2);
