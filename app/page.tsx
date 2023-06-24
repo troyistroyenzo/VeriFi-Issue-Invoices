@@ -3,10 +3,9 @@
 import { useState } from 'react';
 import styles from '../styles/Home.module.css';
 
-
-
 export default function Page() {
-  const [receipts, setReceipts] = useState([]);
+  const [receipts, setReceipts] = useState<Array<Receipt>>([]); // Define the type of receipts
+
   const [amount, setAmount] = useState('');
   const [isUploadDocument, setIsUploadDocument] = useState(false);
   const [documentType, setDocumentType] = useState('');
@@ -16,18 +15,16 @@ export default function Page() {
     if (amount) {
       const timestamp = new Date().toISOString();
       const transactionId = generateTransactionId();
-      const metadataLink = generateMetadataLink();
       const vatValue = calculateVAT(amount);
       const gasFee = calculateGasFee(amount);
 
-      const receipt = {
+      const receipt: Receipt = {
         amount: `PHP ${amount}`,
         timestamp,
         transactionId,
         isUploadDocument,
         documentType,
         documentFile,
-        metadataLink,
         vatValue,
         gasFee,
       };
@@ -193,4 +190,15 @@ export default function Page() {
       )}
     </div>
   );
+}
+
+interface Receipt {
+  amount: string;
+  timestamp: string;
+  transactionId: string;
+  isUploadDocument: boolean;
+  documentType: string;
+  documentFile: string;
+  vatValue: string;
+  gasFee: string;
 }
