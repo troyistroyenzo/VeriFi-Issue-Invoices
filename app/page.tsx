@@ -3,6 +3,8 @@
 import { useState } from 'react';
 import styles from '../styles/Home.module.css';
 
+
+
 export default function Page() {
   const [receipts, setReceipts] = useState([]);
   const [amount, setAmount] = useState('');
@@ -14,6 +16,7 @@ export default function Page() {
     if (amount) {
       const timestamp = new Date().toISOString();
       const transactionId = generateTransactionId();
+      const metadataLink = generateMetadataLink();
       const vatValue = calculateVAT(amount);
       const gasFee = calculateGasFee(amount);
 
@@ -24,6 +27,7 @@ export default function Page() {
         isUploadDocument,
         documentType,
         documentFile,
+        metadataLink,
         vatValue,
         gasFee,
       };
@@ -45,6 +49,16 @@ export default function Page() {
       transactionId += characters.charAt(Math.floor(Math.random() * characters.length));
     }
     return transactionId;
+  };
+
+  const generateMetadataLink = () => {
+    // Generate a random website URL for metadata
+    const characters = 'abcdefghijklmnopqrstuvwxyz';
+    let metadataLink = '';
+    for (let i = 0; i < 10; i++) {
+      metadataLink += characters.charAt(Math.floor(Math.random() * characters.length));
+    }
+    return `https://example.com/${metadataLink}`;
   };
 
   const handleDocumentUpload = (e) => {
@@ -152,6 +166,7 @@ export default function Page() {
                   <th>Document Hash</th>
                   <th>VAT Value</th>
                   <th>Gas Fee</th>
+                  <th>Metadata Link</th>
                 </tr>
               </thead>
               <tbody>
@@ -164,6 +179,11 @@ export default function Page() {
                     <td>{shortenDocumentHash(receipt.documentFile)}</td>
                     <td>{receipt.vatValue}</td>
                     <td>{receipt.gasFee}</td>
+                    <td>
+                      <a href={receipt.metadataLink} target="_blank" rel="noopener noreferrer">
+                        Metadata
+                      </a>
+                    </td>
                   </tr>
                 ))}
               </tbody>
