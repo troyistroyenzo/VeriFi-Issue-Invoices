@@ -58,7 +58,7 @@ export default function Page() {
     return `https://example.com/${metadataLink}`;
   };
 
-  const handleDocumentUpload = (e) => {
+  const handleDocumentUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files[0];
     const fileType = file ? file.type.split('/')[1] : '';
     const reader = new FileReader();
