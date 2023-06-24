@@ -7,9 +7,6 @@ export default function Page() {
   const [receipts, setReceipts] = useState<Array<Receipt>>([]); // Define the type of receipts
 
   const [amount, setAmount] = useState('');
-  const [isUploadDocument, setIsUploadDocument] = useState(false);
-  const [documentType, setDocumentType] = useState('');
-  const [documentFile, setDocumentFile] = useState('');
 
   const handleIssueReceipt = () => {
     if (amount) {
@@ -17,24 +14,20 @@ export default function Page() {
       const transactionId = generateTransactionId();
       const vatValue = calculateVAT(amount);
       const gasFee = calculateGasFee(amount);
+      const metadataLink = generateMetadataLink(); // Generate random metadata link
 
       const receipt: Receipt = {
         amount: `PHP ${amount}`,
         timestamp,
         transactionId,
-        isUploadDocument,
-        documentType,
-        documentFile,
         vatValue,
         gasFee,
+        metadataLink, // Include metadata link
       };
 
       setReceipts([...receipts, receipt]);
 
       setAmount('');
-      setIsUploadDocument(false);
-      setDocumentType('');
-      setDocumentFile('');
     }
   };
 
@@ -49,29 +42,9 @@ export default function Page() {
   };
 
   const generateMetadataLink = () => {
-    // Generate a random website URL for metadata
-    const characters = 'abcdefghijklmnopqrstuvwxyz';
-    let metadataLink = '';
-    for (let i = 0; i < 10; i++) {
-      metadataLink += characters.charAt(Math.floor(Math.random() * characters.length));
-    }
-    return `https://example.com/${metadataLink}`;
-  };
-
-  const handleDocumentUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files[0];
-    const fileType = file ? file.type.split('/')[1] : '';
-    const reader = new FileReader();
-
-    reader.onload = () => {
-      const documentData = reader.result;
-      setDocumentFile(documentData);
-      setDocumentType(fileType);
-    };
-
-    if (file) {
-      reader.readAsDataURL(file);
-    }
+    // Generate a random Etherscan transaction URL for metadata
+    const transactionNumber = Math.floor(Math.random() * 1000000) + 1;
+    return `https://etherscan.io/block/${transactionNumber}`;
   };
 
   const calculateVAT = (amount) => {
@@ -84,14 +57,6 @@ export default function Page() {
     // Calculate gas fee (0.001% cut from each transaction)
     const gasFee = amount * 0.00001;
     return gasFee.toFixed(2);
-  };
-
-  const shortenDocumentHash = (hash) => {
-    if (hash) {
-      const shortenedHash = `${hash.slice(0, 4)}...${hash.slice(-4)}`;
-      return shortenedHash;
-    }
-    return '';
   };
 
   return (
@@ -109,41 +74,6 @@ export default function Page() {
           />
         </div>
 
-        <div className={styles.optionContainer}>
-          <div className={styles.issueReceipt}>
-            <label>
-              <input
-                type="radio"
-                value="receipt"
-                checked={!isUploadDocument}
-                onChange={() => setIsUploadDocument(false)}
-              />
-              Issue Receipt
-            </label>
-          </div>
-
-          <div className={styles.uploadDocument}>
-            <label>
-              <input
-                type="radio"
-                value="document"
-                checked={isUploadDocument}
-                onChange={() => setIsUploadDocument(true)}
-              />
-              Issue Upload Digital Document
-            </label>
-          </div>
-        </div>
-
-        {isUploadDocument && (
-          <div className={styles.documentContainer}>
-            <div className={styles.selectDocument}>
-              <label>Select Document:</label>
-              <input type="file" accept=".pdf,.png" onChange={handleDocumentUpload} />
-            </div>
-          </div>
-        )}
-
         <div className={styles.buttonContainer}>
           <button className={styles.issueButton} onClick={handleIssueReceipt}>Issue Receipt</button>
         </div>
@@ -159,8 +89,6 @@ export default function Page() {
                   <th>Amount</th>
                   <th>Timestamp</th>
                   <th>Transaction ID</th>
-                  <th>Document Type</th>
-                  <th>Document Hash</th>
                   <th>VAT Value</th>
                   <th>Gas Fee</th>
                   <th>Metadata Link</th>
@@ -172,8 +100,6 @@ export default function Page() {
                     <td>{receipt.amount}</td>
                     <td>{receipt.timestamp}</td>
                     <td>{receipt.transactionId}</td>
-                    <td>{receipt.documentType}</td>
-                    <td>{shortenDocumentHash(receipt.documentFile)}</td>
                     <td>{receipt.vatValue}</td>
                     <td>{receipt.gasFee}</td>
                     <td>
@@ -196,9 +122,7 @@ interface Receipt {
   amount: string;
   timestamp: string;
   transactionId: string;
-  isUploadDocument: boolean;
-  documentType: string;
-  documentFile: string;
   vatValue: string;
   gasFee: string;
+  metadataLink: string;
 }
