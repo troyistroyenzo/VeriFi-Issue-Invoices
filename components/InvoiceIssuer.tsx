@@ -11,14 +11,14 @@ interface Receipt {
   metadataLink: string;
   nameOfCompany: string;
   fullName: string;
-  corporationOrCompany: string;
+  corporation: string;
   location: string;
   vatRegistrationId: string;
   min: string;
   sn: string;
   csr: string;
-  listOfItems: string[];
-  discounts: string;
+  items: string[];
+  discount: string;
   amountDue: string;
   changeDue: string;
   netVatable: string;
@@ -51,7 +51,7 @@ const InvoiceIssuer = () => {
         vatValue,
         gasFee,
         metadataLink,
-        companyName: generateRandomName(),
+        nameOfCompany: generateRandomName(),
         fullName: generateRandomName(),
         corporation: generateRandomOption(['Corporation', 'Company']),
         location: generateRandomLocation(),
@@ -239,7 +239,7 @@ const InvoiceIssuer = () => {
                 <strong>Full Name:</strong> {lightboxReceipt.fullName}
               </div>
               <div>
-                <strong>Corporation / Company:</strong> {lightboxReceipt.corporationOrCompany}
+                <strong>Corporation / Company:</strong> {lightboxReceipt.corporation}
               </div>
               <div>
                 <strong>Location:</strong> {lightboxReceipt.location}
@@ -256,18 +256,18 @@ const InvoiceIssuer = () => {
               <div>
                 <strong>CSR:</strong> {lightboxReceipt.csr}
               </div>
-              {lightboxReceipt.listOfItems && (
+              {lightboxReceipt.items && (
                 <div>
                   <strong>List Of Item(s):</strong>
                   <ul>
-                    {lightboxReceipt.listOfItems.map((item, index) => (
-                      <li key={index}>{item}</li>
+                    {lightboxReceipt.items.map((items, index) => (
+                      <li key={index}>{items}</li>
                     ))}
                   </ul>
                 </div>
               )}
               <div>
-                <strong>Discounts:</strong> {lightboxReceipt.discounts}
+                <strong>Discounts:</strong> {lightboxReceipt.discount}
               </div>
               <div>
                 <strong>Amount Due:</strong> {lightboxReceipt.amountDue}
