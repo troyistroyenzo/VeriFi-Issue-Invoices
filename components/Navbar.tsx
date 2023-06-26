@@ -12,6 +12,14 @@ import {
     Image,
     Link,
     Popover,
+    Menu,
+    MenuButton,
+    Avatar,
+    MenuList,
+    MenuItem,
+    MenuDivider,
+    useColorMode,
+    Center,
     PopoverTrigger,
     PopoverContent,
     useColorModeValue,
@@ -24,9 +32,12 @@ import {
     ChevronDownIcon,
     ChevronRightIcon,
   } from '@chakra-ui/icons';
+  import { MoonIcon, SunIcon } from '@chakra-ui/icons';
+
   
   export default function N() {
     const { isOpen, onToggle } = useDisclosure();
+    const { colorMode, toggleColorMode } = useColorMode();
   
     return (
       <Box>
@@ -68,29 +79,40 @@ import {
             justify={'flex-end'}
             direction={'row'}
             spacing={6}>
-            {/* <Button
-              as={'a'}
-              fontSize={'sm'}
-              fontWeight={400}
-              variant={'link'}
-              href={'#'}>
-              Sign In
-            </Button> */}
-            <Button
-              as={'a'}
-              display={{ base: 'none', md: 'inline-flex' }}
-              fontSize={'sm'}
-              fontWeight={600}
-              color={'white'}
-              backgroundImage= 'linear-gradient(78deg, rgb(56,128,255) 0%, rgb(25,234,201) 100%)'
-              href={'contact'}
-              _hover={{
-                transition: '5.3s ease',
-                transitionDelay: '10.3s',
-                backgroundImage: 'linear-gradient(78deg, rgba(159, 122, 234, 1) 0%, rgb(255, 97, 218) 100%)'
-              }}>
-              Contact Us
-            </Button>
+                  <Button onClick={toggleColorMode}>
+                {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
+              </Button>
+             <Menu>
+                <MenuButton
+                  as={Button}
+                  rounded={'full'}
+                  variant={'link'}
+                  cursor={'pointer'}
+                  minW={0}>
+                  <Avatar
+                    size={'sm'}
+                    src={'https://avatars.dicebear.com/api/male/username.svg'}
+                  />
+                </MenuButton>
+                <MenuList alignItems={'center'}>
+                  <br />
+                  <Center>
+                    <Avatar
+                      size={'2xl'}
+                      src={'https://avatars.dicebear.com/api/male/username.svg'}
+                    />
+                  </Center>
+                  <br />
+                  <Center>
+                    <p>Username</p>
+                  </Center>
+                  <br />
+                  <MenuDivider />
+                  <MenuItem>Your Servers</MenuItem>
+                  <MenuItem>Account Settings</MenuItem>
+                  <MenuItem>Logout</MenuItem>
+                </MenuList>
+              </Menu>
           </Stack>
         </Flex>
   
@@ -254,11 +276,11 @@ import {
   
   const NAV_ITEMS: Array<NavItem> = [
     {
-      label: 'About',
+      label: 'Invoices',
       href: 'about',
     },
     {
-      label: 'Product',
+      label: 'Assets',
       children: [
         {
           label: 'Explore Design Work',
@@ -292,7 +314,7 @@ import {
     //   href: '#',
     // },
     {
-      label: 'Blog',
+      label: 'Apps',
       href: 'blog',
     },
     
