@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import styles from '../styles/Home.module.css';
-import Lightbox from './Lightbox';
+
 
 interface Receipt {
   amount: string;
@@ -217,7 +217,7 @@ const InvoiceIssuer = () => {
     )}
 
 
-{lightboxReceipt && (
+      {lightboxReceipt && (
         <div className={styles.overlay}>
           <div className={styles.lightbox}>
             <div className={styles.closeButton} onClick={closeLightbox}>
