@@ -9,16 +9,16 @@ interface Receipt {
   vatValue: string;
   gasFee: string;
   metadataLink: string;
-  companyName: string;
+  nameOfCompany: string;
   fullName: string;
-  corporation: string;
+  corporationOrCompany: string;
   location: string;
   vatRegistrationId: string;
   min: string;
   sn: string;
   csr: string;
-  items: string[];
-  discount: string;
+  listOfItems: string[];
+  discounts: string;
   amountDue: string;
   changeDue: string;
   netVatable: string;
@@ -27,6 +27,7 @@ interface Receipt {
   vat: string;
   supplierInfo: string;
 }
+
 
 const InvoiceIssuer = () => {
   const [receipts, setReceipts] = useState<Receipt[]>([]);
