@@ -1,3 +1,6 @@
+
+
+
 .container {
     display: grid;
     place-items: center;
@@ -19,7 +22,6 @@
     border-radius: 10px;
     border-width: 1px;
     align-items: center;
-    width: 50%;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
   }
@@ -58,20 +60,20 @@
   }
   
   .tableContainer {
-    padding: 1vh;
-    margin-top: 20px;
-    display: grid;
-    grid-gap: 2.5vh;
+    padding: 5vh;
+    margin-top: 10px;
+    display: flex;
+    grid-gap: 1.5vh;
     border-width: 1px;
-    font-weight: 700;
+    font-weight: 400;
     letter-spacing: -1.0px;
     border-radius: 10px;
     border-width: 1px;
     align-items: center;
-    width: 50%;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
-    width: 50%;
+
+    
   }
   
   .issuedReceipts {
@@ -79,7 +81,6 @@
   }
   
   .table {
-    width: 100%;
     border-collapse: collapse;
     
   }
