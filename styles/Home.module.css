@@ -90,3 +90,50 @@
     background-color: #f2f2f2;
   }
   
+  /* Add the following CSS to your existing CSS file or create a new one */
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  background-color: rgba(0, 0, 0, 0.5); /* Adjust the opacity value for the desired darkness */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox {
+  background-color: #fff; /* Background color for the lightbox */
+  padding: 20px;
+  max-width: 400px; /* Adjust the width as needed */
+  z-index: 10000;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Adjust the shadow properties as needed */
+}
+
+.lightbox h2 {
+  margin-top: 0;
+}
+
+.closeButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+
+.content {
+  padding: 10px;
+}
+
+/* Additional styling as per your requirements */
+
+.content div {
+  margin-bottom: 10px;
+}
+
+.content strong {
+  margin-right: 5px;
+}
