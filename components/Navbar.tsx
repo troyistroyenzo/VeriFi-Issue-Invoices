@@ -1,4 +1,3 @@
-import verifiLogo from '../assets/verifi.png';
 
 import {
     Box,
@@ -33,8 +32,9 @@ import {
     ChevronRightIcon,
   } from '@chakra-ui/icons';
   import { MoonIcon, SunIcon } from '@chakra-ui/icons';
-
   
+
+
   export default function N() {
     const { isOpen, onToggle } = useDisclosure();
     const { colorMode, toggleColorMode } = useColorMode();
