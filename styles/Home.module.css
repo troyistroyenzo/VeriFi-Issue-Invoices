@@ -1,15 +1,27 @@
 .container {
     display: grid;
     place-items: center;
+    
   }
   
   .header {
-    font-weight: bold;
+    font-weight: 700;
+    padding: 2.5vh;
   }
   
   .formContainer {
     display: grid;
-    grid-gap: 10px;
+    padding: 7vh;
+    grid-gap: 2.5vh;
+    border-width: 1px;
+    font-weight: 700;
+    letter-spacing: -1.0px;
+    border-radius: 10px;
+    border-width: 1px;
+    align-items: center;
+    width: 50%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
   }
   
   .companyName,
@@ -22,49 +34,44 @@
   .optionContainer {
     display: grid;
     grid-gap: 10px;
+    
   }
   
-  .issueReceipt,
-  .uploadDocument {
-    border: 1px solid;
-    padding: 10px;
-  }
-  
-  .documentContainer {
-    border: 1px solid;
-    padding: 10px;
-  }
-  
-  .selectDocument {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    align-items: center;
-  }
-  
+
   .buttonContainer {
     display: grid;
     place-items: center;
   }
   
   .issueButton {
-    border: 1px solid;
+    color: white;
+    border-radius: 10px;
+    background-image: linear-gradient(78deg, rgba(159, 122, 234, 1) 0%, rgb(255, 97, 218) 100%);
+  /* Rest of the CSS properties */
     padding: 10px;
   }
   
-  .textField {
-    border: 1px solid;
-    color: #000;
-  }
-  
+
   .fileInput {
     border: 1px solid;
     color: #000;
   }
   
   .tableContainer {
-    border: 1px solid;
-    padding: 10px;
+    padding: 1vh;
     margin-top: 20px;
+    display: grid;
+    grid-gap: 2.5vh;
+    border-width: 1px;
+    font-weight: 700;
+    letter-spacing: -1.0px;
+    border-radius: 10px;
+    border-width: 1px;
+    align-items: center;
+    width: 50%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    width: 50%;
   }
   
   .issuedReceipts {
@@ -74,12 +81,14 @@
   .table {
     width: 100%;
     border-collapse: collapse;
+    
   }
   
   .table th,
   .table td {
     border: 1px solid;
     padding: 5px;
+    
   }
   
   .table th {

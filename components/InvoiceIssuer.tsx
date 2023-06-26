@@ -172,9 +172,10 @@ const InvoiceIssuer = () => {
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        <h1>Receipt Issuer</h1>
+        <h1>Invoice Minting</h1>
       </div>
       <div className={styles.formContainer}>
+      
         <div className={styles.amount}>
           <label>Amount (PHP):</label>
           <input type="number" value={amount} onChange={(e) => setAmount(e.target.value)} />
@@ -187,10 +188,12 @@ const InvoiceIssuer = () => {
         </div>
       </div>
 
+      <div className={styles.header}>
+        <h2>Issued Receipts</h2>
+      </div>
       {receipts.length > 0 && (
       <div className={styles.tableContainer}>
         <div className={styles.issuedReceipts}>
-          <h2>Issued Receipts</h2>
           <table className={styles.table}>
             <thead>
               <tr>
